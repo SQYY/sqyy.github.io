@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>提取JIRA中的信息并发送指定邮件</title>
+      <link href="/2018/10/10/%E6%8F%90%E5%8F%96JIRA%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%8F%91%E9%80%81%E6%8C%87%E5%AE%9A%E9%82%AE%E4%BB%B6/"/>
+      <url>/2018/10/10/%E6%8F%90%E5%8F%96JIRA%E4%B8%AD%E7%9A%84%E4%BF%A1%E6%81%AF%E5%B9%B6%E5%8F%91%E9%80%81%E6%8C%87%E5%AE%9A%E9%82%AE%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<h2 id="1-前沿"><a href="#1-前沿" class="headerlink" title="1. 前沿"></a>1. 前沿</h2><p>近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。</p><h2 id="2-实现过程"><a href="#2-实现过程" class="headerlink" title="2.实现过程"></a>2.实现过程</h2><h3 id="2-1-模拟用户信息登录"><a href="#2-1-模拟用户信息登录" class="headerlink" title="2.1 模拟用户信息登录"></a>2.1 模拟用户信息登录</h3><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg" alt=""></p><p>首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与urllib2模块配合使用来访问Internet资源。</p><p>将cookie保存到变量中，利用CookieJar对象实现获取cookie的功能</p><p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e27te3yj31kw0m744o.jpg" alt=""></p><p>其中opener.open可以理解成urllib2的urlopen就可以了。这样我们就可以保留cookie进行其他页面的操作</p><h3 id="2-2-获取每一个页面的详情信息"><a href="#2-2-获取每一个页面的详情信息" class="headerlink" title="2.2 获取每一个页面的详情信息"></a>2.2 获取每一个页面的详情信息</h3><p>使用PyQuery解析页面，提取所有页面漏洞的url，循环遍历出来</p><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw22rv3xqsj31kw0s014f.jpg" alt=""></p><p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fw2dtk4k2tj314o09cta9.jpg" alt=""></p><p>然后解析提取的每一个url地址，根据漏洞详情页面的selector，获取页面不同节点的信息</p><p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2dzvj162j31kw0py0za.jpg" alt=""></p><h3 id="2-3-输出文件"><a href="#2-3-输出文件" class="headerlink" title="2.3 输出文件"></a>2.3 输出文件</h3><p>将我们提取出来的结果，保存成txt文件</p><p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e4z31dej316y064dgu.jpg" alt=""></p><h3 id="2-4-将漏洞的详情信息发送到指定邮箱"><a href="#2-4-将漏洞的详情信息发送到指定邮箱" class="headerlink" title="2.4 将漏洞的详情信息发送到指定邮箱"></a>2.4 将漏洞的详情信息发送到指定邮箱</h3><p>将页面的漏洞名称、漏洞地址、漏洞等级、开发负责人等信息提取出来，发送给指定负责人</p><p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2eg4j69tj318a0lgwj3.jpg" alt=""></p><h2 id="3-效果如下"><a href="#3-效果如下" class="headerlink" title="3.效果如下"></a>3.效果如下</h2><p>将每个漏洞的详情状态发送到指定邮箱，这里用自己邮箱测试一下</p><p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2enc93bej31kw0twx0w.jpg" alt=""></p><p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2fkw9ar0j30zw0du414.jpg" alt=""></p><h2 id="4-脚本地址"><a href="#4-脚本地址" class="headerlink" title="4.脚本地址"></a>4.脚本地址</h2><p><strong><a href="https://github.com/SQYY/JiraInfo" target="_blank" rel="noopener">https://github.com/SQYY/JiraInfo</a></strong></p><p>代码结构有点糙，只是为了满足当前的需求，也没有进行太多完善，有很多差强人意的地方。</p>]]></content>
+      
+      <categories>
+          
+          <category> 脚本编写 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> 脚本编写 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Struts-001远程代码执行漏洞分析</title>
       <link href="/2018/10/07/Struts-001%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/"/>
       <url>/2018/10/07/Struts-001%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/</url>

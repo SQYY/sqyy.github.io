@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,爬虫,脚本编写," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与u">
+<meta name="keywords" content="Python,爬虫,脚本编写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提取JIRA中的信息并发送指定邮件">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/提取JIRA中的信息并发送指定邮件/index.html">
+<meta property="og:site_name" content="水清云影&#39;s Blog">
+<meta property="og:description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与u">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e27te3yj31kw0m744o.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw22rv3xqsj31kw0s014f.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fw2dtk4k2tj314o09cta9.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2dzvj162j31kw0py0za.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e4z31dej316y064dgu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2eg4j69tj318a0lgwj3.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2enc93bej31kw0twx0w.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2fkw9ar0j30zw0du414.jpg">
+<meta property="og:updated_time" content="2018-10-10T03:09:17.483Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="提取JIRA中的信息并发送指定邮件">
+<meta name="twitter:description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与u">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/提取JIRA中的信息并发送指定邮件/"/>
+
+
+
+
+
+  <title>提取JIRA中的信息并发送指定邮件 | 水清云影's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">水清云影's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/提取JIRA中的信息并发送指定邮件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="水清云影's Blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水清云影's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">提取JIRA中的信息并发送指定邮件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T10:58:21+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/脚本编写/" itemprop="url" rel="index">
+                    <span itemprop="name">脚本编写</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-前沿"><a href="#1-前沿" class="headerlink" title="1. 前沿"></a>1. 前沿</h2><p>近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。</p>
+<h2 id="2-实现过程"><a href="#2-实现过程" class="headerlink" title="2.实现过程"></a>2.实现过程</h2><h3 id="2-1-模拟用户信息登录"><a href="#2-1-模拟用户信息登录" class="headerlink" title="2.1 模拟用户信息登录"></a>2.1 模拟用户信息登录</h3><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg" alt=""></p>
+<p>首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与urllib2模块配合使用来访问Internet资源。</p>
+<p>将cookie保存到变量中，利用CookieJar对象实现获取cookie的功能</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e27te3yj31kw0m744o.jpg" alt=""></p>
+<p>其中opener.open可以理解成urllib2的urlopen就可以了。这样我们就可以保留cookie进行其他页面的操作</p>
+<h3 id="2-2-获取每一个页面的详情信息"><a href="#2-2-获取每一个页面的详情信息" class="headerlink" title="2.2 获取每一个页面的详情信息"></a>2.2 获取每一个页面的详情信息</h3><p>使用PyQuery解析页面，提取所有页面漏洞的url，循环遍历出来</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw22rv3xqsj31kw0s014f.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fw2dtk4k2tj314o09cta9.jpg" alt=""></p>
+<p>然后解析提取的每一个url地址，根据漏洞详情页面的selector，获取页面不同节点的信息</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2dzvj162j31kw0py0za.jpg" alt=""></p>
+<h3 id="2-3-输出文件"><a href="#2-3-输出文件" class="headerlink" title="2.3 输出文件"></a>2.3 输出文件</h3><p>将我们提取出来的结果，保存成txt文件</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e4z31dej316y064dgu.jpg" alt=""></p>
+<h3 id="2-4-将漏洞的详情信息发送到指定邮箱"><a href="#2-4-将漏洞的详情信息发送到指定邮箱" class="headerlink" title="2.4 将漏洞的详情信息发送到指定邮箱"></a>2.4 将漏洞的详情信息发送到指定邮箱</h3><p>将页面的漏洞名称、漏洞地址、漏洞等级、开发负责人等信息提取出来，发送给指定负责人</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2eg4j69tj318a0lgwj3.jpg" alt=""></p>
+<h2 id="3-效果如下"><a href="#3-效果如下" class="headerlink" title="3.效果如下"></a>3.效果如下</h2><p>将每个漏洞的详情状态发送到指定邮箱，这里用自己邮箱测试一下</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2enc93bej31kw0twx0w.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2fkw9ar0j30zw0du414.jpg" alt=""></p>
+<h2 id="4-脚本地址"><a href="#4-脚本地址" class="headerlink" title="4.脚本地址"></a>4.脚本地址</h2><p><strong><a href="https://github.com/SQYY/JiraInfo" target="_blank" rel="noopener">https://github.com/SQYY/JiraInfo</a></strong></p>
+<p>代码结构有点糙，只是为了满足当前的需求，也没有进行太多完善，有很多差强人意的地方。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+          
+            <a href="/tags/脚本编写/" rel="tag"># 脚本编写</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/07/Struts-001远程代码执行漏洞分析/" rel="next" title="Struts-001远程代码执行漏洞分析">
+                <i class="fa fa-chevron-left"></i> Struts-001远程代码执行漏洞分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg"
+                alt="水清云影's Blog" />
+            
+              <p class="site-author-name" itemprop="name">水清云影's Blog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前沿"><span class="nav-text">1. 前沿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实现过程"><span class="nav-text">2.实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-模拟用户信息登录"><span class="nav-text">2.1 模拟用户信息登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-获取每一个页面的详情信息"><span class="nav-text">2.2 获取每一个页面的详情信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-输出文件"><span class="nav-text">2.3 输出文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-将漏洞的详情信息发送到指定邮箱"><span class="nav-text">2.4 将漏洞的详情信息发送到指定邮箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-效果如下"><span class="nav-text">3.效果如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-脚本地址"><span class="nav-text">4.脚本地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水清云影's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
