@@ -1,0 +1,8 @@
+User-agent: * Allow: /
+Allow: /archives/
+Disallow: /vendors/
+Disallow: /categories/
+
+
+Sitemap: http://www.sqyysec.com/sitemap.xml
+Sitemap: http://www.sqyysec.com/baidusitemap.xml
