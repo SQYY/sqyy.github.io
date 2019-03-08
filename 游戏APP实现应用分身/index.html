@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,爬虫,脚本编写," />
+  <meta name="keywords" content="安卓逆向,篡改包名,应用分身," />
 
 
 
@@ -79,28 +79,37 @@
 
 
 
-<meta name="description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与">
-<meta name="keywords" content="Python,爬虫,脚本编写">
+<meta name="description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
+<meta name="keywords" content="安卓逆向,篡改包名,应用分身">
 <meta property="og:type" content="article">
-<meta property="og:title" content="提取JIRA中的信息并发送指定邮件">
-<meta property="og:url" content="http://yoursite.com/提取JIRA中的信息并发送指定邮件/index.html">
+<meta property="og:title" content="游戏APP实现应用分身">
+<meta property="og:url" content="http://yoursite.com/游戏APP实现应用分身/index.html">
 <meta property="og:site_name" content="水清云影&#39;s Blog">
-<meta property="og:description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与">
+<meta property="og:description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e27te3yj31kw0m744o.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw22rv3xqsj31kw0s014f.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fw2dtk4k2tj314o09cta9.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2dzvj162j31kw0py0za.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e4z31dej316y064dgu.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2eg4j69tj318a0lgwj3.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2enc93bej31kw0twx0w.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2fkw9ar0j30zw0du414.jpg">
-<meta property="og:updated_time" content="2018-10-16T03:22:20.434Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fynjkej7l5j30u00wcdm0.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynghlbsgmj30xi028q3i.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fynglgnbu3j31j70u0wku.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyngjgzu4vj30mo0pwwhu.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyngd8xbdsj30ts0wgtg9.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhnqhworj31wu0fygpv.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhpce9b2j321m0fo0x4.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhschuv6j314z0u04hb.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fynhtg594cj30q00xy15b.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhukfxapj30u00wa0yv.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhvncv36j31ig0u0gsb.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyni98uautj31h00k610a.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynibbwoukj31i2044gnj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynifstckhj30ly1647wh.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynikauxqhj31ga044dho.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynioyut91j30ms160npd.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fynipiturej30mq16qkjl.jpg">
+<meta property="og:updated_time" content="2019-03-08T00:54:20.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="提取JIRA中的信息并发送指定邮件">
-<meta name="twitter:description" content="1. 前沿近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。 2.实现过程2.1 模拟用户信息登录 首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与">
-<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg">
+<meta name="twitter:title" content="游戏APP实现应用分身">
+<meta name="twitter:description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg">
 
 
 
@@ -130,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/提取JIRA中的信息并发送指定邮件/"/>
+  <link rel="canonical" href="http://yoursite.com/游戏APP实现应用分身/"/>
 
 
 
 
 
-  <title>提取JIRA中的信息并发送指定邮件 | 水清云影's Blog</title>
+  <title>游戏APP实现应用分身 | 水清云影's Blog</title>
   
 
 
@@ -263,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/提取JIRA中的信息并发送指定邮件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/游戏APP实现应用分身/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
@@ -280,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">提取JIRA中的信息并发送指定邮件</h1>
+          <h1 class="post-title" itemprop="name headline">游戏APP实现应用分身</h1>
         
 
         <div class="post-meta">
@@ -292,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T10:58:21+08:00">
-                2018-10-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T08:46:27+08:00">
+                2019-02-25
               </time>
             
 
@@ -315,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/脚本编写/" itemprop="url" rel="index">
-                    <span itemprop="name">脚本编写</span>
+                  <a href="/categories/安卓逆向/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓逆向</span>
                   </a>
                 </span>
 
@@ -353,26 +362,47 @@
 
       
         <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h2 id="1-前沿"><a href="#1-前沿" class="headerlink" title="1. 前沿"></a>1. 前沿</h2><p>近期需要把业务系统中的一些内容详情拷贝出来，并发送到指定邮箱，虽然内容不是很多，但是搞着搞着实在有点麻烦，就考虑着写一个脚本来获取JIRA系统中的信息，并实现自动发送邮件功能。功能并不是很强大，只是满足了一点小小需求。</p>
-<h2 id="2-实现过程"><a href="#2-实现过程" class="headerlink" title="2.实现过程"></a>2.实现过程</h2><h3 id="2-1-模拟用户信息登录"><a href="#2-1-模拟用户信息登录" class="headerlink" title="2.1 模拟用户信息登录"></a>2.1 模拟用户信息登录</h3><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw2ya3y716j31da0rkq5v.jpg" alt=""></p>
-<p>首先我们需要先模拟登录我们JIRA的系统，这里引用的是cookielib模块。它的主要作用是提供可存储cookie的对象，以便于与urllib2模块配合使用来访问Internet资源。</p>
-<p>将cookie保存到变量中，利用CookieJar对象实现获取cookie的功能</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e27te3yj31kw0m744o.jpg" alt=""></p>
-<p>其中opener.open可以理解成urllib2的urlopen就可以了。这样我们就可以保留cookie进行其他页面的操作</p>
-<h3 id="2-2-获取每一个页面的详情信息"><a href="#2-2-获取每一个页面的详情信息" class="headerlink" title="2.2 获取每一个页面的详情信息"></a>2.2 获取每一个页面的详情信息</h3><p>使用PyQuery解析页面，提取所有页面漏洞的url，循环遍历出来</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fw22rv3xqsj31kw0s014f.jpg" alt=""></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fw2dtk4k2tj314o09cta9.jpg" alt=""></p>
-<p>然后解析提取的每一个url地址，根据漏洞详情页面的selector，获取页面不同节点的信息</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2dzvj162j31kw0py0za.jpg" alt=""></p>
-<h3 id="2-3-输出文件"><a href="#2-3-输出文件" class="headerlink" title="2.3 输出文件"></a>2.3 输出文件</h3><p>将我们提取出来的结果，保存成txt文件</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2e4z31dej316y064dgu.jpg" alt=""></p>
-<h3 id="2-4-将漏洞的详情信息发送到指定邮箱"><a href="#2-4-将漏洞的详情信息发送到指定邮箱" class="headerlink" title="2.4 将漏洞的详情信息发送到指定邮箱"></a>2.4 将漏洞的详情信息发送到指定邮箱</h3><p>将页面的漏洞名称、漏洞地址、漏洞等级、开发负责人等信息提取出来，发送给指定负责人</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2eg4j69tj318a0lgwj3.jpg" alt=""></p>
-<h2 id="3-效果如下"><a href="#3-效果如下" class="headerlink" title="3.效果如下"></a>3.效果如下</h2><p>将每个漏洞的详情状态发送到指定邮箱，这里用自己邮箱测试一下</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fw2enc93bej31kw0twx0w.jpg" alt=""></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fw2fkw9ar0j30zw0du414.jpg" alt=""></p>
-<h2 id="4-脚本地址"><a href="#4-脚本地址" class="headerlink" title="4.脚本地址"></a>4.脚本地址</h2><p><strong><a href="https://github.com/SQYY/JiraInfo" target="_blank" rel="noopener">https://github.com/SQYY/JiraInfo</a></strong></p>
-<p>代码结构有点糙，只是为了满足当前的需求，也没有进行太多完善，有很多差强人意的地方。</p>
+<h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。</p>
+<p>可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg" alt=""></p>
+<h2 id="2、使用到的工具"><a href="#2、使用到的工具" class="headerlink" title="2、使用到的工具"></a>2、使用到的工具</h2><ul>
+<li>网易MuMu模拟器</li>
+<li>AndroidCrackTool</li>
+<li>Android Studio</li>
+</ul>
+<h2 id="3、逆向分析"><a href="#3、逆向分析" class="headerlink" title="3、逆向分析"></a>3、逆向分析</h2><p>这里我们选择极品芝麻官这款游戏来进行测试，我们先使用AndroidCrackTool修改签名后重新编译APK</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fynjkej7l5j30u00wcdm0.jpg" alt=""></p>
+<p>重新生成的APK签名就发生了改变，而通常在开发一款应用程序，都会指定一个签名，后期的更新签名也是不变的。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynghlbsgmj30xi028q3i.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fynglgnbu3j31j70u0wku.jpg" alt=""></p>
+<p>而在 <strong>/data/app</strong>下可以看到，安装的应用程序都是以包名作为文件夹名来存储数据的，那么虽然我们签名的不同，但是包名是相同的，所以会安装失败。所以说在安卓操作系统中，包名不能冲突，要么是签名一致覆盖安装，要么就是更改包名</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyngjgzu4vj30mo0pwwhu.jpg" alt=""></p>
+<p>那么我们使用<strong>AndroidCrackTool</strong>来反编译APK编码</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyngd8xbdsj30ts0wgtg9.jpg" alt=""></p>
+<p>用Android Stutio打开，可以在<strong>AndroidManifest.xml</strong>这个配置文件中看到包的名称</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhnqhworj31wu0fygpv.jpg" alt=""></p>
+<p>这里把包的名称<code>com.anzhuojpzmg.ckhd.aligames</code>改成<code>com.anzhuojpzmg.ckhd.sqyyaligames</code></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhpce9b2j321m0fo0x4.jpg" alt=""></p>
+<p>重新回编译apk，可以看到在文件夹中重新生成一个apk</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhschuv6j314z0u04hb.jpg" alt=""></p>
+<p>查看包名的信息，可以看到包名已经被修改成功</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fynhtg594cj30q00xy15b.jpg" alt=""></p>
+<p>那么我们将刚刚回编译的apk进行安装(注意：AndroidKiller回编译apk时自动对apk进行签名，AndroidCrackTool回编译apk后还需手动签名apk)</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhukfxapj30u00wa0yv.jpg" alt=""></p>
+<p>那么在安装我们回编译的apk过程中，又会出现这样的报错信息<code>INSTALL_ FAILED_ CONFLICTING_ PROVIDER</code></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhvncv36j31ig0u0gsb.jpg" alt=""></p>
+<p>就是说我们更改包名后的apk和之前安装apk的提供者是相同的，安装过程中提供者发生冲突。那么只要我们根据提示的错误信息继续更改配置文件中提供者的名称就可以了</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyni98uautj31h00k610a.jpg" alt=""></p>
+<p>我们找到有关内容提供者的信息，修改其中的内容</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynibbwoukj31i2044gnj.jpg" alt=""></p>
+<p>重新编译apk后安装进行安装，虽然可以进行安装，但是会出现错误。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynifstckhj30ly1647wh.jpg" alt=""></p>
+<p>配置文件中提供者的信息配置错误，提示我们更改其对应的属性，那么我们根据错误信息继续更改提供者中的内容</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynikauxqhj31ga044dho.jpg" alt=""></p>
+<p>这次我们重新回编译进行安装，可以看到安装成功，两个apk可同时进行</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynioyut91j30ms160npd.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fynipiturej30mq16qkjl.jpg" alt=""></p>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>其实这个逆向过程是非常简单的，修改包名和签名信息，再根据错误提示进行修改就可以了，但主要是学习其中的一个逆向思维，根据apk运行错误展示的一些错误信息，找到错误的所在位置，进行修改，从而实现自己想要的功能</p>
 
       
     </div>
@@ -390,11 +420,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/安卓逆向/" rel="tag"># 安卓逆向</a>
           
-            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+            <a href="/tags/篡改包名/" rel="tag"># 篡改包名</a>
           
-            <a href="/tags/脚本编写/" rel="tag"># 脚本编写</a>
+            <a href="/tags/应用分身/" rel="tag"># 应用分身</a>
           
         </div>
       
@@ -407,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Struts-001远程代码执行漏洞分析/" rel="next" title="Struts-001远程代码执行漏洞分析">
-                <i class="fa fa-chevron-left"></i> Struts-001远程代码执行漏洞分析
+              <a href="/Struts2-005远程代码执行漏洞分析/" rel="next" title="Struts2-005远程代码执行漏洞分析">
+                <i class="fa fa-chevron-left"></i> Struts2-005远程代码执行漏洞分析
               </a>
             
           </div>
@@ -416,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Apache-Tomcat-远程代码执行漏洞复现（CVE-2017-12615）/" rel="prev" title="Apache Tomcat 远程代码执行漏洞复现（CVE-2017-12615）">
-                Apache Tomcat 远程代码执行漏洞复现（CVE-2017-12615） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -555,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前沿"><span class="nav-text">1. 前沿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实现过程"><span class="nav-text">2.实现过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-模拟用户信息登录"><span class="nav-text">2.1 模拟用户信息登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-获取每一个页面的详情信息"><span class="nav-text">2.2 获取每一个页面的详情信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-输出文件"><span class="nav-text">2.3 输出文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-将漏洞的详情信息发送到指定邮箱"><span class="nav-text">2.4 将漏洞的详情信息发送到指定邮箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-效果如下"><span class="nav-text">3.效果如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-脚本地址"><span class="nav-text">4.脚本地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、背景"><span class="nav-text">1、背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、使用到的工具"><span class="nav-text">2、使用到的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、逆向分析"><span class="nav-text">3、逆向分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结"><span class="nav-text">4、总结</span></a></li></ol></div>
             
 
           </div>
