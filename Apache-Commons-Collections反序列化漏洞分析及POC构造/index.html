@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0uc3wuqosj31ju0d8n0f.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1g0u8z23gvej31n80madk9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ucamht5uj318i070dha.jpg">
-<meta property="og:updated_time" content="2019-04-11T06:21:19.664Z">
+<meta property="og:updated_time" content="2019-04-11T06:23:39.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache-Commons-Collections反序列化漏洞分析及POC构造">
 <meta name="twitter:description" content="1.反序列化的原因如果Java应用对用户输入的内容做了序列化，但是用户输入的内容是不可信的数据，进行了恶意构造，那么在对恶意构造的数据做反序列化处理，就会产生的非预期对象，在这个过程中就可能带来任意代码执行。 2.漏洞原理在进行Map转换时，修改Map中的key和value会调用接口，触发内置的transform来获取类名、方法对象进行反射，其中传入的方法名，参数类型等都是可控的，那么我们就可以">
@@ -352,7 +352,7 @@
       
         <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
 <h2 id="1-反序列化的原因"><a href="#1-反序列化的原因" class="headerlink" title="1.反序列化的原因"></a>1.反序列化的原因</h2><p>如果Java应用对用户输入的内容做了序列化，但是用户输入的内容是不可信的数据，进行了恶意构造，那么在对恶意构造的数据做反序列化处理，就会产生的非预期对象，在这个过程中就可能带来任意代码执行。</p>
-<h2 id="2-漏洞原理"><a href="#2-漏洞原理" class="headerlink" title="2.漏洞原理"></a>2.漏洞原理</h2><p>在进行Map转换时，修改Map中的key和value会调用接口，触发内置的transform来获取类名、方法对象进行反射，其中传入的方法名，参数类型等都是可控的，那么我们就可以构造ChainedTransformer来进行反射的方式调用函数</p>
+<h2 id="2-漏洞原理"><a href="#2-漏洞原理" class="headerlink" title="2.漏洞原理"></a>2.漏洞原理</h2><p>在进行Map转换时，修改Map中的key和value会调用接口，触发内置的transform来获取类名、方法对象进行反射，其中传入的方法名，参数类型等都是可控的，那么我们就可以构造ChainedTransformer来进行反射，调用任意函数</p>
 <h2 id="3-影响版本"><a href="#3-影响版本" class="headerlink" title="3.影响版本"></a>3.影响版本</h2><p>commons-collections&lt;=3.2.1存在漏洞</p>
 <h2 id="4-下载地址"><a href="#4-下载地址" class="headerlink" title="4.下载地址"></a>4.下载地址</h2><p>本文对commons-collections-3.2.1进行漏洞分析，下载地址：<a href="https://github.com/SQYY/Apache-Commons-Collections/raw/master/commons-collections-3.2.1-1.0.0.jar" target="_blank" rel="noopener">https://github.com/SQYY/Apache-Commons-Collections/raw/master/commons-collections-3.2.1-1.0.0.jar</a></p>
 <h2 id="5-漏洞分析"><a href="#5-漏洞分析" class="headerlink" title="5.漏洞分析"></a>5.漏洞分析</h2><p>在<code>org/apache/commons/collections/map/TransformedMap.class</code>中可以看到<strong>decorate()</strong>方法，它是将一个Map对象，转换成TransformedMap对象。</p>
@@ -427,6 +427,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Apache-Tomcat-远程代码执行漏洞复现（CVE-2019-0232）/" rel="prev" title="Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232）">
+                Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -529,7 +533,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
