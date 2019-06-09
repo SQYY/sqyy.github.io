@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="安卓逆向,篡改包名,应用分身," />
+  <meta name="keywords" content="安卓逆向,去除广告," />
 
 
 
@@ -79,37 +79,32 @@
 
 
 
-<meta name="description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
-<meta name="keywords" content="安卓逆向,篡改包名,应用分身">
+<meta name="description" content="1、前言​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用车来了这款APP来进行分析，下载地址：链接:https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw  密码:4jvo  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Stud">
+<meta name="keywords" content="安卓逆向,去除广告">
 <meta property="og:type" content="article">
-<meta property="og:title" content="游戏APP实现应用分身">
-<meta property="og:url" content="http://yoursite.com/游戏APP实现应用分身/index.html">
+<meta property="og:title" content="手机应用去除广告">
+<meta property="og:url" content="http://yoursite.com/手机应用去除广告/index.html">
 <meta property="og:site_name" content="水清云影&#39;s Blog">
-<meta property="og:description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
+<meta property="og:description" content="1、前言​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用车来了这款APP来进行分析，下载地址：链接:https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw  密码:4jvo  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Stud">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fynjkej7l5j30u00wcdm0.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynghlbsgmj30xi028q3i.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fynglgnbu3j31j70u0wku.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyngjgzu4vj30mo0pwwhu.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fyngd8xbdsj30ts0wgtg9.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhnqhworj31wu0fygpv.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhpce9b2j321m0fo0x4.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhschuv6j314z0u04hb.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fynhtg594cj30q00xy15b.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhukfxapj30u00wa0yv.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhvncv36j31ig0u0gsb.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fyni98uautj31h00k610a.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynibbwoukj31i2044gnj.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynifstckhj30ly1647wh.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynikauxqhj31ga044dho.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fynioyut91j30ms160npd.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fynipiturej30mq16qkjl.jpg">
-<meta property="og:updated_time" content="2019-03-08T00:54:20.922Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzsa40j77qj31gy0fydra.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzsba0ww0lj31u10u0q9u.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzsb2gsquzj30yw0hk0yn.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzsbj9k2yoj30qc0xwk2l.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixkc9611j31kb0u0qlo.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ixp43v97j31m10u0qhb.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iy2an6rwj30mo18mwx7.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1g0iy1h9mcwj30mq18q446.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixt5ilb8j327q0ha0yy.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1g0iy874npdj31kc0u0aoi.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1g0iycgonixj31vo0u0tl3.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iygeo8uwj30u00wan4p.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iykzri67j30lw18g426.jpg">
+<meta property="og:updated_time" content="2019-06-09T12:42:37.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游戏APP实现应用分身">
-<meta name="twitter:description" content="1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。 可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Studio  3、逆向分">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg">
+<meta name="twitter:title" content="手机应用去除广告">
+<meta name="twitter:description" content="1、前言​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用车来了这款APP来进行分析，下载地址：链接:https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw  密码:4jvo  2、使用到的工具 网易MuMu模拟器 AndroidCrackTool Android Stud">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzsa40j77qj31gy0fydra.jpg">
 
 
 
@@ -139,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/游戏APP实现应用分身/"/>
+  <link rel="canonical" href="http://yoursite.com/手机应用去除广告/"/>
 
 
 
 
 
-  <title>游戏APP实现应用分身 | 水清云影's Blog</title>
+  <title>手机应用去除广告 | 水清云影's Blog</title>
   
 
 
@@ -272,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/游戏APP实现应用分身/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/手机应用去除广告/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
@@ -289,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">游戏APP实现应用分身</h1>
+          <h1 class="post-title" itemprop="name headline">手机应用去除广告</h1>
         
 
         <div class="post-meta">
@@ -301,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T08:46:27+08:00">
-                2019-02-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T20:31:03+08:00">
+                2019-05-26
               </time>
             
 
@@ -361,48 +356,36 @@
       
 
       
-        <p><script type="text/javascript" src="/js/src/bai.js"></script></p>
-<h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。</p>
-<p>可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fyngbngthsj31f00pi44i.jpg" alt=""></p>
+        <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用<strong>车来了</strong>这款APP来进行分析，下载地址：链接:<a href="https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw" target="_blank" rel="noopener">https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw</a>  密码:4jvo</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsa40j77qj31gy0fydra.jpg" alt=""></p>
 <h2 id="2、使用到的工具"><a href="#2、使用到的工具" class="headerlink" title="2、使用到的工具"></a>2、使用到的工具</h2><ul>
 <li>网易MuMu模拟器</li>
 <li>AndroidCrackTool</li>
 <li>Android Studio</li>
+<li>Dalvik Debug Monitor Service(DDMS)</li>
 </ul>
-<h2 id="3、逆向分析"><a href="#3、逆向分析" class="headerlink" title="3、逆向分析"></a>3、逆向分析</h2><p>这里我们选择极品芝麻官这款游戏来进行测试，我们先使用AndroidCrackTool修改签名后重新编译APK</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fynjkej7l5j30u00wcdm0.jpg" alt=""></p>
-<p>重新生成的APK签名就发生了改变，而通常在开发一款应用程序，都会指定一个签名，后期的更新签名也是不变的。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynghlbsgmj30xi028q3i.jpg" alt=""></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fynglgnbu3j31j70u0wku.jpg" alt=""></p>
-<p>而在 <strong>/data/app</strong>下可以看到，安装的应用程序都是以包名作为文件夹名来存储数据的，那么虽然我们签名的不同，但是包名是相同的，所以会安装失败。所以说在安卓操作系统中，包名不能冲突，要么是签名一致覆盖安装，要么就是更改包名</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyngjgzu4vj30mo0pwwhu.jpg" alt=""></p>
-<p>那么我们使用<strong>AndroidCrackTool</strong>来反编译APK编码</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fyngd8xbdsj30ts0wgtg9.jpg" alt=""></p>
-<p>用Android Stutio打开，可以在<strong>AndroidManifest.xml</strong>这个配置文件中看到包的名称</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhnqhworj31wu0fygpv.jpg" alt=""></p>
-<p>这里把包的名称<code>com.anzhuojpzmg.ckhd.aligames</code>改成<code>com.anzhuojpzmg.ckhd.sqyyaligames</code></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhpce9b2j321m0fo0x4.jpg" alt=""></p>
-<p>重新回编译apk，可以看到在文件夹中重新生成一个apk</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhschuv6j314z0u04hb.jpg" alt=""></p>
-<p>查看包名的信息，可以看到包名已经被修改成功</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fynhtg594cj30q00xy15b.jpg" alt=""></p>
-<p>那么我们将刚刚回编译的apk进行安装(注意：AndroidKiller回编译apk时自动对apk进行签名，AndroidCrackTool回编译apk后还需手动签名apk)</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fynhukfxapj30u00wa0yv.jpg" alt=""></p>
-<p>那么在安装我们回编译的apk过程中，又会出现这样的报错信息<code>INSTALL_ FAILED_ CONFLICTING_ PROVIDER</code></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynhvncv36j31ig0u0gsb.jpg" alt=""></p>
-<p>就是说我们更改包名后的apk和之前安装apk的提供者是相同的，安装过程中提供者发生冲突。那么只要我们根据提示的错误信息继续更改配置文件中提供者的名称就可以了</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fyni98uautj31h00k610a.jpg" alt=""></p>
-<p>我们找到有关内容提供者的信息，修改其中的内容</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynibbwoukj31i2044gnj.jpg" alt=""></p>
-<p>重新编译apk后安装进行安装，虽然可以进行安装，但是会出现错误。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynifstckhj30ly1647wh.jpg" alt=""></p>
-<p>配置文件中提供者的信息配置错误，提示我们更改其对应的属性，那么我们根据错误信息继续更改提供者中的内容</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynikauxqhj31ga044dho.jpg" alt=""></p>
-<p>这次我们重新回编译进行安装，可以看到安装成功，两个apk可同时进行</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fynioyut91j30ms160npd.jpg" alt=""></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fynipiturej30mq16qkjl.jpg" alt=""></p>
-<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>其实这个逆向过程是非常简单的，修改包名和签名信息，再根据错误提示进行修改就可以了，但主要是学习其中的一个逆向思维，根据apk运行错误展示的一些错误信息，找到错误的所在位置，进行修改，从而实现自己想要的功能</p>
+<h2 id="3、工具介绍"><a href="#3、工具介绍" class="headerlink" title="3、工具介绍"></a>3、工具介绍</h2><p>DDMS是SDK套件中的一个调试工具，主要可以插桩打印一些异常堆栈信息、模拟电话呼叫等功能</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzsba0ww0lj31u10u0q9u.jpg" alt=""></p>
+<p>DDMS 工具存放在 SDK 的 tools 路径下，可直接双击使用</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzsb2gsquzj30yw0hk0yn.jpg" alt=""></p>
+<p>如果DDMS出现找不到设备的问题，adb devices查看一下，adb kill-server   —&gt;   adb start-server就搞定了</p>
+<h2 id="4、逆向分析"><a href="#4、逆向分析" class="headerlink" title="4、逆向分析"></a>4、逆向分析</h2><p>应用包名信息如下：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzsbj9k2yoj30qc0xwk2l.jpg" alt=""></p>
+<p>我们先用DDMS进行调试，过滤包名信息</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixkc9611j31kb0u0qlo.jpg" alt=""></p>
+<p>这里就是过滤后的内容，会看到关于包名的一些相关内容，如初始化信息、广告信息、版本信息、一些加载流程等等等等</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ixp43v97j31m10u0qhb.jpg" alt=""></p>
+<p>在打开APP弹出广告信息的时候，DDMS请求广告的内容也会显示出来</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iy2an6rwj30mo18mwx7.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0iy1h9mcwj30mq18q446.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixt5ilb8j327q0ha0yy.jpg" alt=""></p>
+<p>我们反编译后直接搜索与广告相关的信息，然后删除掉就可以</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0iy874npdj31kc0u0aoi.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0iycgonixj31vo0u0tl3.jpg" alt=""></p>
+<p>我们把一些关于广告的内容删除掉后重新编译</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iygeo8uwj30u00wan4p.jpg" alt=""></p>
+<p>这样重新编译的apk就不会带有任何的广告信息</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iykzri67j30lw18g426.jpg" alt=""></p>
 
       
     </div>
@@ -422,9 +405,7 @@
           
             <a href="/tags/安卓逆向/" rel="tag"># 安卓逆向</a>
           
-            <a href="/tags/篡改包名/" rel="tag"># 篡改包名</a>
-          
-            <a href="/tags/应用分身/" rel="tag"># 应用分身</a>
+            <a href="/tags/去除广告/" rel="tag"># 去除广告</a>
           
         </div>
       
@@ -437,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Struts2-005远程代码执行漏洞分析/" rel="next" title="Struts2-005远程代码执行漏洞分析">
-                <i class="fa fa-chevron-left"></i> Struts2-005远程代码执行漏洞分析
+              <a href="/Apache-Tomcat-远程代码执行漏洞复现（CVE-2019-0232）/" rel="next" title="Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232）">
+                <i class="fa fa-chevron-left"></i> Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232）
               </a>
             
           </div>
@@ -446,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Apache-Commons-Collections反序列化漏洞分析及POC构造/" rel="prev" title="Apache-Commons-Collections反序列化漏洞分析及POC构造">
-                Apache-Commons-Collections反序列化漏洞分析及POC构造 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、背景"><span class="nav-text">1、背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、使用到的工具"><span class="nav-text">2、使用到的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、逆向分析"><span class="nav-text">3、逆向分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结"><span class="nav-text">4、总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、前言"><span class="nav-text">1、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、使用到的工具"><span class="nav-text">2、使用到的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、工具介绍"><span class="nav-text">3、工具介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、逆向分析"><span class="nav-text">4、逆向分析</span></a></li></ol></div>
             
 
           </div>

@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>手机应用去除广告</title>
+      <link href="/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%B9%BF%E5%91%8A/"/>
+      <url>/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%8E%BB%E9%99%A4%E5%B9%BF%E5%91%8A/</url>
+      <content type="html"><![CDATA[<h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用<strong>车来了</strong>这款APP来进行分析，下载地址：链接:<a href="https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw" target="_blank" rel="noopener">https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw</a>  密码:4jvo</p><p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsa40j77qj31gy0fydra.jpg" alt=""></p><h2 id="2、使用到的工具"><a href="#2、使用到的工具" class="headerlink" title="2、使用到的工具"></a>2、使用到的工具</h2><ul><li>网易MuMu模拟器</li><li>AndroidCrackTool</li><li>Android Studio</li><li>Dalvik Debug Monitor Service(DDMS)</li></ul><h2 id="3、工具介绍"><a href="#3、工具介绍" class="headerlink" title="3、工具介绍"></a>3、工具介绍</h2><p>DDMS是SDK套件中的一个调试工具，主要可以插桩打印一些异常堆栈信息、模拟电话呼叫等功能</p><p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzsba0ww0lj31u10u0q9u.jpg" alt=""></p><p>DDMS 工具存放在 SDK 的 tools 路径下，可直接双击使用</p><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzsb2gsquzj30yw0hk0yn.jpg" alt=""></p><p>如果DDMS出现找不到设备的问题，adb devices查看一下，adb kill-server   —&gt;   adb start-server就搞定了</p><h2 id="4、逆向分析"><a href="#4、逆向分析" class="headerlink" title="4、逆向分析"></a>4、逆向分析</h2><p>应用包名信息如下：</p><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzsbj9k2yoj30qc0xwk2l.jpg" alt=""></p><p>我们先用DDMS进行调试，过滤包名信息</p><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixkc9611j31kb0u0qlo.jpg" alt=""></p><p>这里就是过滤后的内容，会看到关于包名的一些相关内容，如初始化信息、广告信息、版本信息、一些加载流程等等等等</p><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ixp43v97j31m10u0qhb.jpg" alt=""></p><p>在打开APP弹出广告信息的时候，DDMS请求广告的内容也会显示出来</p><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iy2an6rwj30mo18mwx7.jpg" alt=""></p><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0iy1h9mcwj30mq18q446.jpg" alt=""></p><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ixt5ilb8j327q0ha0yy.jpg" alt=""></p><p>我们反编译后直接搜索与广告相关的信息，然后删除掉就可以</p><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0iy874npdj31kc0u0aoi.jpg" alt=""></p><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0iycgonixj31vo0u0tl3.jpg" alt=""></p><p>我们把一些关于广告的内容删除掉后重新编译</p><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iygeo8uwj30u00wan4p.jpg" alt=""></p><p>这样重新编译的apk就不会带有任何的广告信息</p><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0iykzri67j30lw18g426.jpg" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 安卓逆向 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 安卓逆向 </tag>
+            
+            <tag> 去除广告 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232）</title>
       <link href="/Apache-Tomcat-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2019-0232%EF%BC%89/"/>
       <url>/Apache-Tomcat-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2019-0232%EF%BC%89/</url>
