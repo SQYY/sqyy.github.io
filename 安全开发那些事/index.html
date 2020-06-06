@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="安全开发," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="​    安全开发团队的建设并不是每个企业的必选项，但针对安全需求的定制开发确是越来越多企业的需求。从行业整体情况看，安全需求趋于复杂化、差异化。标准的，大而全的产品未来很难满足企业安全需求。所以越来越多的企业对针对自己在某个垂类的特殊需求，定制或改造安全产品。本文从三个方面分别论述安全开发工作的一些要点 从开发方式上看，一般来说有三个选择： 1、自己招人，自建团队。 自己组建开发团队是很多">
+<meta name="keywords" content="安全开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全开发那些事">
+<meta property="og:url" content="http://yoursite.com/安全开发那些事/index.html">
+<meta property="og:site_name" content="水清云影&#39;s Blog">
+<meta property="og:description" content="​    安全开发团队的建设并不是每个企业的必选项，但针对安全需求的定制开发确是越来越多企业的需求。从行业整体情况看，安全需求趋于复杂化、差异化。标准的，大而全的产品未来很难满足企业安全需求。所以越来越多的企业对针对自己在某个垂类的特殊需求，定制或改造安全产品。本文从三个方面分别论述安全开发工作的一些要点 从开发方式上看，一般来说有三个选择： 1、自己招人，自建团队。 自己组建开发团队是很多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-20T10:41:37.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安全开发那些事">
+<meta name="twitter:description" content="​    安全开发团队的建设并不是每个企业的必选项，但针对安全需求的定制开发确是越来越多企业的需求。从行业整体情况看，安全需求趋于复杂化、差异化。标准的，大而全的产品未来很难满足企业安全需求。所以越来越多的企业对针对自己在某个垂类的特殊需求，定制或改造安全产品。本文从三个方面分别论述安全开发工作的一些要点 从开发方式上看，一般来说有三个选择： 1、自己招人，自建团队。 自己组建开发团队是很多">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/安全开发那些事/"/>
+
+
+
+
+
+  <title>安全开发那些事 | 水清云影's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">水清云影's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/安全开发那些事/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="水清云影's Blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水清云影's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安全开发那些事</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T18:40:49+08:00">
+                2019-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安全开发/" itemprop="url" rel="index">
+                    <span itemprop="name">安全开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><meta name="referrer" content="no-referrer"></p>
+<script type="text/javascript" src="/js/src/bai.js"></script>
+
+<p>​    安全开发团队的建设并不是每个企业的必选项，但针对安全需求的定制开发确是越来越多企业的需求。从行业整体情况看，安全需求趋于复杂化、差异化。标准的，大而全的产品未来很难满足企业安全需求。所以越来越多的企业对针对自己在某个垂类的特殊需求，定制或改造安全产品。本文从三个方面分别论述安全开发工作的一些要点</p>
+<p>从<strong>开发方式</strong>上看，一般来说有三个选择：</p>
+<p><strong>1、自己招人，自建团队。</strong> 自己组建开发团队是很多安全团队的梦想，有了自己的团队，不仅可以全面掌控需求的实现，也可以让团队的逼格全面提升。但是涉及到申请HC的问题，需要将自主开发的优劣跟高层说清楚。在后文我们详细探讨。退一步说，如果HC申请下来了，招人的时候你会发现会有三类人供你选择①懂开发的不懂安全；②懂安全的不懂开发；③都懂的高手。土豪公司当然可以直接选择都懂的高手加盟，但是对于大部分预算有限的企业来说一定要有个抉择。我们建议选择①，原因很简单安全团队一般都不缺懂安全的人。</p>
+<p><strong>2、人员外包。</strong> 通过人员外包的方式可以快速组建团队，但除了前期团队组建时期对人员把关之外，还涉及到三个问题。①团队管理难，毕竟生杀大权不在安全团队leader手里；②团队稳定性差，根据经验，外包开发团队的人员稳定性相对较差，可能的一种原因是开发人员没有归属感；③难以保障知识产权，代码都是别人写的，想保护知识产权的成本还是很高的。</p>
+<p><strong>3、定制开发项目。</strong> 通过项目的方式进行定制开发，避免了招人和团队管理的复杂性。但安全开发团队至少应该在合同签署前完全明确开发需求，否则项目验收会存在很大风险。另外，后续迭代大概率还需要用之前的合作方，在流程上存在一定风险。所以定制开发项目适合需求明确，后期迭代需求不大的项目。</p>
+<p>开发方式确定后，进入到具体<strong>开发工作</strong>，也不是一件容易的事。</p>
+<p>首先，我们要确定<strong>自主开发范围</strong>。任何一个团队都不是全能的，就算技术是全能的，精力也是有限的，所以我们要明确什么类型的工作是可以通过自主研发完成的。我们建议通过自主研发实现的工作至少应该满足下面有三个特点之一。①市场上没有（或很少有）能解决此类问题的产品，比如针对细分领域的风控产品；②企业对某方面的需求是市场常规产品无法满足的，比如对十万台主机以上系统实现极速漏洞扫描；③安全团队可以明确的设计产品运行逻辑，一些具体的技术难点可以单独攻关，但总体逻辑都说不清楚，很可能会使项目流产。</p>
+<p>其次，要选择一个合理的<strong>迭代方式</strong>。一般说来我们借鉴互联网公司“小步快走”的模式。近日跟某大厂专家沟通的时候得知，他们的产品迭代需求，如果两周不能完成就要拆分需求。也就是说没两周就会有一个小版本出来。这样的好处是一方面可以频繁试错，避免犯大错。另一方面可以给用户一个持续的刺激，当然toB的应用是否适用这个方法有待验证。</p>
+<p>第三，产品设计。从笔者经验来看，系统的复杂程度和系统推广的难度成正比的关系，所以强烈建议在系统设计的时候要充分考虑易用性。尤其是非安全部门内部使用的系统（比如工单系统）的开发，一定要考虑好用的问题。另外一个加分项就是<strong>好看</strong>，一个看着舒服的系统绝对是彰显安全团队能力的捷径，尤其是给管理层看的系统，至少不能难看。</p>
+<p>最后，代码安全。一个每天发现别人系统漏洞的团队开发的系统，如果出现漏洞是一件非常丢人的事。就像一个资深安全工程师设弱密码一样丢人。所以安全团队输出代码的安全性最好不要出现安全问题，这是颜面问题。</p>
+<p>最后我们探讨一下 自主开发的<strong>优势和劣势</strong>。</p>
+<p>先说<strong>优势</strong>：</p>
+<ol>
+<li>自主可控：对于一些重要的产品，代码和策略上的自主可控还是很重要的。可以有效避免安全策略被轻易突破。</li>
+<li>贴近需求：文章开头就提到过，越来越多的企业对针对自己在某个垂类的特殊需求，通用的产业产品很难完全符合这类需求。这就需要开发能力的介入。</li>
+<li>方便迭代：在攻防技术不断迭代的今天，很难有一个能力能一劳永逸的解决某一类的问题。企业安全团队作为防御者，如果有开发能力，就能掌握产品能力迭代的主动性，在对抗中取得一定的优势。</li>
+</ol>
+<p>再说说<strong>劣势</strong>：</p>
+<ol>
+<li>成本不可控：除非开发需求完全明确，而且期间没有任何技术攻关工作。否则投入的开发成本就没法做到完全可控。但一个有经验的团队会对一些“坑”有充分的预估，所以也不可能完全失控。</li>
+<li>产品价值生效较慢（对比商业产品采购）：自主开发产品对比采购商业产品来说最直接的劣势就是速度了。所以开发团队在产品研发的前期要充分考虑需求的迫切性。要平衡商业产品和自研产品之间的关系。</li>
+<li>管理成本高：增加团队的规模，会在一定程度上增加管理成本，这很好理解。另一方面，如何平衡安全开发团队和安全需求团队之间的关系也很重要。</li>
+<li>团队稳定性影响产品迭代速度：一般来说，企业安全开发团队不会很大（经验上看5-8人居多，当然大公司除外）。这种情况下，每个人员的流失对团队的影响就比较大，如何保证小型团队的稳定性，并对流动性进行充分预估是管理者需要思考的问题。</li>
+</ol>
+<p><strong>写在最后</strong></p>
+<p>总体来说，安全团队中有一个负责开发的小组对整个安全体系建设是有很多好处的。甚至有些比较精锐的团队里都是安全和开发的双料高手，但这种情况下往往出现研发成果的功能性远远超过易用性。这种“专家系统”只有专家才能使用，产品化程度很低。造成这种现象的原因也不复杂，这些“双料高手”很难有时间和精力，甚至不屑去做那些工程化和产品化的工作。所以，笔者认为如果安全团队对未来的输出成果的预期不仅仅是工具，那么一定要考虑工程化和产品化的能力。</p>
+<hr>
+<p><strong>文章转载自微信公众号：</strong> <a href="https://mp.weixin.qq.com/s/Ph39rqB5ptZfeFhHzCQsMA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Ph39rqB5ptZfeFhHzCQsMA</a></p>
+<p><strong>微信公众号：</strong> 小黄的安全工作实录</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安全开发/" rel="tag"># 安全开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Android逆向之旅-爆破开启快手App的长视频拍摄权限功能/" rel="next" title="Android逆向之旅-爆破开启快手App的长视频拍摄权限功能">
+                <i class="fa fa-chevron-left"></i> Android逆向之旅-爆破开启快手App的长视频拍摄权限功能
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Hutool任意文件覆盖漏洞分析/" rel="prev" title="Hutool任意文件覆盖漏洞分析">
+                Hutool任意文件覆盖漏洞分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sqyy.jpeg"
+                alt="水清云影's Blog" />
+            
+              <p class="site-author-name" itemprop="name">水清云影's Blog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水清云影's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

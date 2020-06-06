@@ -250,12 +250,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/手机应用去除广告/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Apache Dubbo反序列化漏洞分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/手机应用去除广告/" itemprop="url">手机应用去除广告</a></h1>
+                <a class="post-title-link" href="/Apache Dubbo反序列化漏洞分析/" itemprop="url">Apache Dubbo反序列化漏洞分析</a></h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T20:31:03+08:00">
-                2019-05-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-25T14:18:21+08:00">
+                2020-02-25
               </time>
             
 
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安卓逆向/" itemprop="url" rel="index">
-                    <span itemprop="name">安卓逆向</span>
+                  <a href="/categories/漏洞分析/" itemprop="url" rel="index">
+                    <span itemprop="name">漏洞分析</span>
                   </a>
                 </span>
 
@@ -343,13 +343,14 @@
       
         
           
-          
-
-1、前言​    大部分的应用中在刚打开APP或者APP中的某个部分都会插入一些广告，所以这篇文章主要分析如何去除手机APP中广告的内容，这里用车来了这款APP来进行分析，下载地址：链接:https://pan.baidu.com/s/1y0TRR-QWSVQPTQ-e-4QsLw  密码:4j
+          1、漏洞相关信息漏洞名称：Apache Dubbo反序列化漏洞
+漏洞编号：CVE-2019-17564
+漏洞描述：
+​    Apache Dubbo是一个分布式框架，致力于提供高性能透明化的RPC远程服务调用方案，以及SOA服务治理方案。Apache Dubbo在实际应用场景中主要负责解决分布式的
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/手机应用去除广告/#more" rel="contents">
+            <a class="btn" href="/Apache Dubbo反序列化漏洞分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -400,12 +401,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Apache-Tomcat-远程代码执行漏洞复现（CVE-2019-0232）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Log4j-反序列化漏洞分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -419,7 +420,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Apache-Tomcat-远程代码执行漏洞复现（CVE-2019-0232）/" itemprop="url">Apache Tomcat 远程代码执行漏洞复现（CVE-2019-0232）</a></h1>
+                <a class="post-title-link" href="/Log4j-反序列化漏洞分析/" itemprop="url">Log4j 反序列化漏洞分析</a></h1>
         
 
         <div class="post-meta">
@@ -431,164 +432,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T10:41:34+08:00">
-                2019-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透测试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-
-1、漏洞信息漏洞编号：CVE-2019-0232
-漏洞名称：CVE-2019-0232-远程代码执行漏洞
-影响版本：
-
-Apache Tomcat 9.0.0.M1 to 9.0.17
-Apache Tomcat 8.5.0 to 8.5.39
-Apache Tomcat 7.0.0 to 7.
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Apache-Tomcat-远程代码执行漏洞复现（CVE-2019-0232）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Apache-Commons-Collections反序列化漏洞分析及POC构造/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="水清云影's Blog">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="水清云影's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Apache-Commons-Collections反序列化漏洞分析及POC构造/" itemprop="url">Apache-Commons-Collections反序列化漏洞分析及POC构造</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T14:18:21+08:00">
-                2019-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T10:10:56+08:00">
+                2019-12-26
               </time>
             
 
@@ -651,12 +496,14 @@ Apache Tomcat 7.0.0 to 7.
           
           
 
-1.反序列化的原因如果Java应用对用户输入的内容做了序列化，但是用户输入的内容是不可信的数据，进行了恶意构造，那么在对恶意构造的数据做反序列化处理，就会产生的非预期对象，在这个过程中就可能带来任意代码执行。
-2.漏洞原理在进行Map转换时，修改Map中的key和value会调用接口，触发内置的
+1、漏洞相关信息漏洞名称：Apache Log4j反序列化漏洞
+漏洞编号：CVE-2019-17571
+漏洞描述：
+Log4j是Apache开发的一款基于Java的开源日志工具，可以将Web项目中的日志输出到控制台，文件，GUI组件，甚至是套接口服务器。此漏洞是因为Log4j在启动套接字服务器后
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Apache-Commons-Collections反序列化漏洞分析及POC构造/#more" rel="contents">
+            <a class="btn" href="/Log4j-反序列化漏洞分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -707,12 +554,12 @@ Apache Tomcat 7.0.0 to 7.
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/游戏APP实现应用分身/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Apache Solr Velocity模板注入RCE漏洞分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -726,7 +573,7 @@ Apache Tomcat 7.0.0 to 7.
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/游戏APP实现应用分身/" itemprop="url">游戏APP实现应用分身</a></h1>
+                <a class="post-title-link" href="/Apache Solr Velocity模板注入RCE漏洞分析/" itemprop="url">Apache Solr Velocity 模板注入RCE漏洞分析</a></h1>
         
 
         <div class="post-meta">
@@ -738,8 +585,8 @@ Apache Tomcat 7.0.0 to 7.
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T08:46:27+08:00">
-                2019-02-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T16:18:51+08:00">
+                2019-11-15
               </time>
             
 
@@ -761,8 +608,8 @@ Apache Tomcat 7.0.0 to 7.
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安卓逆向/" itemprop="url" rel="index">
-                    <span itemprop="name">安卓逆向</span>
+                  <a href="/categories/漏洞分析/" itemprop="url" rel="index">
+                    <span itemprop="name">漏洞分析</span>
                   </a>
                 </span>
 
@@ -800,16 +647,12 @@ Apache Tomcat 7.0.0 to 7.
       
         
           
-          
-
-1、背景近些年手机上各种分身类软件被追为热点，就是一部手机上安装多个相同应用，实现多个帐号同时登录使用。比如说同时登陆两个QQ微信，游戏大小号双开等。
-可以看到模拟器本身就自带多开应用的功能，那么我们又如何通过一些技术的手段来实行应用分身呢？(虽然大多数手机都支持应用多开的功能)
-
-2、使用到的
+          1、漏洞描述由于Solr默认未开启登录认证，只需请求/节点名/config,将配置项params.resource.loader.enabled设置为true，再构造链接即可让Solr中的Velocity模版引擎渲染传入的恶意模版，造成命令执行。
+2、影响版本Apache Solr 5.x — Ap
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/游戏APP实现应用分身/#more" rel="contents">
+            <a class="btn" href="/Apache Solr Velocity模板注入RCE漏洞分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -860,12 +703,12 @@ Apache Tomcat 7.0.0 to 7.
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Struts2-005远程代码执行漏洞分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Hutool任意文件覆盖漏洞分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="水清云影's Blog">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -879,7 +722,7 @@ Apache Tomcat 7.0.0 to 7.
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Struts2-005远程代码执行漏洞分析/" itemprop="url">Struts2-005远程代码执行漏洞分析</a></h1>
+                <a class="post-title-link" href="/Hutool任意文件覆盖漏洞分析/" itemprop="url">Hutool任意文件覆盖漏洞分析</a></h1>
         
 
         <div class="post-meta">
@@ -891,8 +734,8 @@ Apache Tomcat 7.0.0 to 7.
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T14:10:40+08:00">
-                2019-01-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T10:10:56+08:00">
+                2019-10-24
               </time>
             
 
@@ -955,13 +798,167 @@ Apache Tomcat 7.0.0 to 7.
           
           
 
-1.漏洞信息官方链接：https://cwiki.apache.org/confluence/display/WW/S2-005
-官方概述：XWork ParameterInterceptors bypass allows remote command execution
-影响版本：Struts
+
+1.漏洞相关信息漏洞名称：Hutool任意文件覆盖漏洞
+漏洞编号：CVE-2018-17297
+漏洞描述：攻击者可以恶意构造Zip压缩文件，通过路径遍历覆盖任意文件，是“任意文件覆盖”和“目录遍历”问题的结合，攻击者可以将文件解压缩到正常解压缩路径之外并覆盖敏感文件
+漏洞原理：zipEntry
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Struts2-005远程代码执行漏洞分析/#more" rel="contents">
+            <a class="btn" href="/Hutool任意文件覆盖漏洞分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Android逆向之旅-爆破开启快手App的长视频拍摄权限功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="水清云影's Blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水清云影's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Android逆向之旅-爆破开启快手App的长视频拍摄权限功能/" itemprop="url">Android逆向之旅-爆破开启快手App的长视频拍摄权限功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-19T20:27:18+08:00">
+                2019-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/安卓逆向/" itemprop="url" rel="index">
+                    <span itemprop="name">安卓逆向</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+
+1、功能说明​    在前几天有人问我快手发布了内侧发布长视频的功能，他找快手小助手申请了但是没有回复，所以我就有空通过代码层面让他有这个功能看看效果如何，这个其实网上已经有很多人在说这个功能了，我们百度一下就找到了这张演示图：
+
+这个也是需要去快手官方申请权限的，这里看到如果要是成功了，在视频
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Android逆向之旅-爆破开启快手App的长视频拍摄权限功能/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1003,7 +1000,7 @@ Apache Tomcat 7.0.0 to 7.
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1039,7 +1036,7 @@ Apache Tomcat 7.0.0 to 7.
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="https://ws1.sinaimg.cn/large/006tNbRwly1fu8jgfzexvj30hs0hs3zx.jpg"
+                src="/images/sqyy.jpeg"
                 alt="水清云影's Blog" />
             
               <p class="site-author-name" itemprop="name">水清云影's Blog</p>
@@ -1053,7 +1050,7 @@ Apache Tomcat 7.0.0 to 7.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1064,7 +1061,7 @@ Apache Tomcat 7.0.0 to 7.
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1075,7 +1072,7 @@ Apache Tomcat 7.0.0 to 7.
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1112,7 +1109,7 @@ Apache Tomcat 7.0.0 to 7.
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

